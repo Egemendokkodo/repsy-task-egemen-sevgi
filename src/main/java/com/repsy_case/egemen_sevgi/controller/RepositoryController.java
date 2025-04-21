@@ -33,7 +33,7 @@ public class RepositoryController {
             @RequestParam(required = false) MultipartFile metaFile) {
 
         try {
-            // Validate metaFile is provided
+            // is metaFile provided ?
             if (metaFile == null) {
                 return ResponseEntity.badRequest().body(AppStrings.META_JSON_REQUIRED);
             }
@@ -51,7 +51,7 @@ public class RepositoryController {
 
             // metaFile name check
             String metaFileName = metaFile.getOriginalFilename();
-            if (metaFileName == null || !metaFileName.equals("meta.json")) {
+            if (metaFileName == null || !metaFileName.equals("meta.json") || !metaFileName.endsWith(".json")) {
                 return ResponseEntity.badRequest().body(AppStrings.META_FILE_MUST_BE_NAMED);
             }
 

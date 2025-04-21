@@ -10,7 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.repsy_case.egemen_sevgi.dto.MetaData;
-
+import com.repsy_case.egemen_sevgi.dto.MetaData.Dependency;
 import com.repsy_case.egemen_sevgi.entity.DependencyEntity;
 import com.repsy_case.egemen_sevgi.entity.PackageEntity;
 import com.repsy_case.egemen_sevgi.repository.PackageEntityRepository;
@@ -58,7 +58,7 @@ public class StorageService {
          if (metaData.getDependencies() != null) {
         for (MetaData.Dependency depData : metaData.getDependencies()) {
             DependencyEntity dep = new DependencyEntity();
-            dep.setPackageName(depData.getPackage_());
+            dep.setPackageName(depData.getPackage());
             dep.setVersion(depData.getVersion());
             pkg.getDependencies().add(dep); 
         }
