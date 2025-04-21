@@ -8,4 +8,6 @@ public class AppStrings {
     public static final String FAILED_TO_DEPLOY_PACKAGE="Failed to deploy package: ";
     public static final String DEPLOYED_SUCCESSFULLY=" deployed successfully";
     public static final String FILE_NOT_FOUND="File not found: ";
+    public static final String VERSION_IN="Version in meta.json doesn't match URL path";
+    public static final String PACKAGE_NAME_IN = "Package name in meta.json doesn't match URL path";
 }

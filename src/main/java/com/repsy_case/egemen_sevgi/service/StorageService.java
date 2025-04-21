@@ -14,6 +14,7 @@ import com.repsy_case.egemen_sevgi.dto.MetaData.Dependency;
 import com.repsy_case.egemen_sevgi.entity.DependencyEntity;
 import com.repsy_case.egemen_sevgi.entity.PackageEntity;
 import com.repsy_case.egemen_sevgi.repository.PackageEntityRepository;
+import com.repsy_case.egemen_sevgi.util.AppStrings;
 
 
 @Service
@@ -43,11 +44,11 @@ public class StorageService {
         MetaData metaData = objectMapper.readValue(metaFile.getInputStream(), MetaData.class);
 
         if (!metaData.getName().equals(packageName)) {
-            throw new IllegalArgumentException("Package name in meta.json doesn't match URL path");
+            throw new IllegalArgumentException(AppStrings.PACKAGE_NAME_IN);
         }
 
         if (!metaData.getVersion().equals(version)) {
-            throw new IllegalArgumentException("Version in meta.json doesn't match URL path");
+            throw new IllegalArgumentException(AppStrings.VERSION_IN);
         }
 
         PackageEntity pkg = new PackageEntity();
