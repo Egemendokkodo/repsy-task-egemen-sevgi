@@ -58,7 +58,7 @@ public class StorageService {
          if (metaData.getDependencies() != null) {
         for (MetaData.Dependency depData : metaData.getDependencies()) {
             DependencyEntity dep = new DependencyEntity();
-            dep.setPackageName(depData.getPackage());
+            dep.setPackageName(depData.getPackage_());
             dep.setVersion(depData.getVersion());
             pkg.getDependencies().add(dep); 
         }
