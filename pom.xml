@@ -59,9 +59,24 @@
 			<artifactId>minio</artifactId>
 			<version>8.5.7</version> 
 		</dependency>
+
+	
+		
 		
 	</dependencies>
+	<repositories>
+		<repository>
+			<id>repsy</id>
+			<name>My Private Maven Repository on Repsy</name>
+			<url>https://repo.repsy.io/mvn/egemensevgi/egemen-sevgi-case</url>
+		</repository>
 
+		<repository>
+			<id>repsy-dockerrepo</id>
+			<url>https://repo.repsy.io/mvn/egemensevgi/egemensevgicasedockerrepo</url>
+		</repository>
+		
+	</repositories>
 	<build>
 		<plugins>
 			<plugin>
@@ -87,6 +102,22 @@
 						</exclude>
 					</excludes>
 				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-deploy-plugin</artifactId>
+				<version>3.0.0-M1</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>deploy</goal>
+						</goals>
+						<configuration>
+							<repositoryId>repsy</repositoryId>
+							<url>https://repo.repsy.io/maven/egemensevgi/egemensevgicasedockerrepo</url>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>

@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:13
+    container_name: postgres-container
+    environment:
+      POSTGRES_DB: repsy
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 789852
+    ports:
+      - "5432:5432"
+    networks:
+      - app-network
+
+  minio:
+    image: minio/minio
+    container_name: minio-container
+    environment:
+      MINIO_ACCESS_KEY: minioadmin
+      MINIO_SECRET_KEY: minioadmin
+    command: server /data
+    ports:
+      - "9000:9000"
+    networks:
+      - app-network
+
+  app:
+    build:
+      context: .
+    container_name: spring-boot-app
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/repsy
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: 789852
+      MINIO_ENDPOINT: minio:9000
+      MINIO_ACCESS_KEY: minioadmin
+      MINIO_SECRET_KEY: minioadmin
+    depends_on:
+      - postgres
+      - minio
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
