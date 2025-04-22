@@ -91,4 +91,12 @@
 		</plugins>
 	</build>
 
+	<distributionManagement>
+		<repository>
+		  <id>repsy</id>
+		  <name>My Private Maven Repository on Repsy</name>
+		  <url>https://repo.repsy.io/mvn/egemensevgi/egemen-sevgi-case</url>
+		</repository>
+	  </distributionManagement>
+
 </project>
